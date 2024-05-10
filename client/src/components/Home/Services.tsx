@@ -1,5 +1,5 @@
-import { Heading2 } from "./Typography";
-import { services } from "../../util/contstants";
+import { Heading2 } from "../Typography";
+import { services } from "../../constants/services";
 
 export default function Services() {
     return (

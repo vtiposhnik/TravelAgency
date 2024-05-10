@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { Heading1 } from "./Typography";
+import { Heading1 } from "../Typography";
 
 export default function Home() {
     return (

@@ -2,7 +2,9 @@ import express, { Response } from 'express'
 import mongoose from 'mongoose'
 import dotenv from 'dotenv'
 import bodyParser from 'body-parser'
+import cookieParser from 'cookie-parser'
 import cors from 'cors'
+import authRoutes from './routes/auth.route'
 
 dotenv.config()
 
@@ -10,6 +12,7 @@ const app = express()
 
 app.use(bodyParser.json())
 app.use(express.urlencoded({ extended: true }));
+app.use(cookieParser())
 app.use(cors())
 
 if (process.env.MONGO_DB_URI) {
@@ -27,6 +30,8 @@ if (process.env.MONGO_DB_URI) {
 app.get('/', (req, res: Response) => {
     res.json({ message: 'server running' })
 })
+
+app.use('/api/auth', authRoutes)
 
 const port = process.env.PORT
 app.listen(port, () => {

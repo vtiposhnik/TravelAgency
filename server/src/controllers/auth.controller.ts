@@ -38,6 +38,7 @@ export const register = async (req: Request, res: Response, next: NextFunction) 
 export const login = async (req: Request, res: Response, next: NextFunction) => {
     const secret_key = process.env.SECRET_KEY_JWT
     let token = 'default_token'
+    console.log(req.body)
 
     try {
         const { email, password } = req.body

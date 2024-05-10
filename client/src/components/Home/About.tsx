@@ -1,4 +1,4 @@
-import { Heading2 } from "./Typography"
+import { Heading2 } from "../Typography"
 
 export default function About() {
     return (
