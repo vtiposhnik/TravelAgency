@@ -3,7 +3,7 @@ import { services } from "../../constants/services";
 
 export default function Services() {
     return (
-        <section className='p-5 text-center min-h-[100vh] grid'>
+        <section className='p-5 text-center min-h-[100vh] grid' id="services">
           <Heading2 children='Our Services' />
           <div className='grid lg:grid-cols-4 md:grid-cols-2 text-center gap-6 mt-5'>
             {services.map(service => (

@@ -1,6 +1,6 @@
 import { useForm } from "react-hook-form";
 import { Alert, Button, Label, Spinner, TextInput } from "flowbite-react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { ErrorBoundary } from 'react-error-boundary'
 import { useState } from "react";
 import { signInStart, signInFailure, signInSuccess } from "../redux/userSlice";
@@ -11,6 +11,7 @@ export default function SignInPage() {
     const [errorMsg, setErrorMsg] = useState('')
     const { loading } = useSelector((state: RootState) => state.user)
     const dispatch = useDispatch()
+    const navigate = useNavigate()
 
     const {
         register,
@@ -37,6 +38,7 @@ export default function SignInPage() {
 
             console.log(data)
             dispatch(signInSuccess(data.user))
+            navigate('/')
 
         } catch (error) {
             dispatch(signInFailure(error))
