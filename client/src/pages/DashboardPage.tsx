@@ -29,7 +29,7 @@ export default function DashboardPage() {
                     <Profile />
                 </Tabs.Item>
 
-                {currentUser && currentUser.isAdmin ? <Tabs.Item title="Tours" icon={MdDashboard}>
+                {currentUser && currentUser.isAdmin ? <Tabs.Item active title="Tours" icon={MdDashboard}>
                     <ManageTours />
                 </Tabs.Item> : <></>}
 

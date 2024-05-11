@@ -6,7 +6,7 @@ import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { RootState } from "../../redux/store/store";
 import { ITours, initialTourState } from "../../constants/interfaces";
-import { deleteTour, fetchTours } from "../../constants/constants";
+import { deleteTour, fetchTours } from "../../constants/fetch";
 
 export default function ManageTours() {
     const { currentUser } = useSelector((state: RootState) => state.user)
