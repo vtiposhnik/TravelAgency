@@ -27,6 +27,7 @@ const tourSchema = new mongoose.Schema({
         type: String,
         required: true
     },
+    images: [String],
     duration: {
         type: Number,
         required: true
@@ -49,7 +50,7 @@ const tourSchema = new mongoose.Schema({
         default: 3.8
     },
 
-}, {timestamps: true})
+}, { timestamps: true })
 
 const Tour = mongoose.model('Tour', tourSchema)
 
