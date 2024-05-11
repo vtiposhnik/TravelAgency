@@ -17,7 +17,6 @@ export default function Header() {
         backgroundColor: 'rgba(0, 0, 0, 0.5)',
         color: 'white'
     }
-    console.log(!path.includes('login'))
 
     useEffect(() => {
 
