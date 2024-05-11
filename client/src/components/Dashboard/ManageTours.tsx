@@ -5,62 +5,40 @@ import { HiOutlineExclamationCircle } from "react-icons/hi";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { RootState } from "../../redux/store/store";
-
-interface ITours {
-    _id: string,
-    name: string,
-    slug: string,
-    duration: number,
-    maxPeople: number,
-    difficulty: string,
-    ratingAvg: number,
-    price: number,
-    summary: string,
-    description: string,
-    coverImg: string,
-    createdAt: string,
-    updatedAt: string
-}
+import { ITours, initialTourState } from "../../constants/interfaces";
+import { deleteTour, fetchTours } from "../../constants/constants";
 
 export default function ManageTours() {
     const { currentUser } = useSelector((state: RootState) => state.user)
+    const [errorMsg, setErrorMsg] = useState('')
+    const [actionMsg, setActionMsg] = useState('')
 
-    const [tours, setTours] = useState<ITours[]>([{
-        _id: '12345678',
-        name: 'default',
-        slug: 'default',
-        duration: 10,
-        maxPeople: 20,
-        difficulty: 'medium',
-        ratingAvg: 5.0,
-        price: 999,
-        summary: 'default summary',
-        description: 'default description',
-        coverImg: 'default image',
-        createdAt: 'default date',
-        updatedAt: 'default date'
-    }])
+    const [tours, setTours] = useState<ITours[]>([initialTourState])
 
     const [showModal, setShowModal] = useState(false)
     const [deleteTourID, setDeleteTourID] = useState('')
 
     useEffect(() => {
-        async function getTours() {
-            try {
-                const res = await axios.get('/api/tour/getTours');
-                console.log(res.data)
-                setTours(res.data.tours)
-            } catch (error) {
-                console.error('Error fetching data:', error);
-            }
+        console.log('rendered')
+        const getTours = async () => {
+            fetchTours()
+                .then(data => { setTours(data.tours) })
+                .catch(error => { setErrorMsg(error) })
         }
 
-        getTours();
-    }, [])
+        getTours()
+    }, [showModal])
 
 
     const handleDeletePost = () => {
-        console.log("delete post clicked")
+        console.log(deleteTourID)
+        deleteTour(deleteTourID)
+            .then(data => {
+                setActionMsg(data.message)
+                console.log(actionMsg)
+                setShowModal(false)
+            })
+            .catch(error => setErrorMsg(error))
     }
 
     return (
@@ -85,7 +63,7 @@ export default function ManageTours() {
                                         {new Date(tour.updatedAt).toLocaleDateString()}
                                     </Table.Cell>
                                     <Table.Cell>
-                                        <Link to={`/tour/${tour.slug}`}>
+                                        <Link to={`/tours/${tour.slug}`}>
                                             <img
                                                 src={tour.coverImg}
                                                 alt={tour.name}
@@ -97,7 +75,7 @@ export default function ManageTours() {
                                     <Table.Cell>
                                         <Link
                                             className='font-medium text-gray-900 dark:text-white'
-                                            to={`/tour/${tour.slug}`}
+                                            to={`/tours/${tour.slug}`}
                                         >
                                             {tour.name}
                                         </Link>
