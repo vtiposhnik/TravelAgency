@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 :root {
-  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  font-family: 'TildaSans', sans-serif;
   line-height: 1.5;
   font-weight: 400;
 
@@ -17,6 +17,9 @@
 body {
   box-sizing: border-box;
 }
+section:not(.home) {
+  margin: 2rem auto;
+}
 
 .hero-wrapper {
   background:
@@ -27,9 +30,11 @@ body {
   background-size: cover;
   height: calc(100vh - 3rem);
 }
+.home > * {
+  margin: 0;
+}
 
 .hero-content {
-
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -37,13 +42,13 @@ body {
   color: #fff;
   text-align: center;
 
-  > p {
+  >p {
     font-size: 0.9rem;
     width: 80%;
     margin: 0 auto;
   }
 
-  > a {
+  >a {
     margin-top: 4rem;
   }
 
@@ -70,4 +75,35 @@ body {
       font-size: 1.4rem;
     }
   }
+}
+
+/* Tour Overview.tsx */
+.icon {
+  font-size: 1.3rem;
+  color: rgb(87, 222, 222);
+  vertical-align: middle;
+  margin: 0 0.5rem 0.2rem 0;
+}
+
+.overview-box span {
+  text-transform: uppercase;
+  font-weight: 500;
+  margin-right: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: start;
+}
+
+.labels>div {
+  display: flex;
+  align-items: center;
+  margin-bottom: 0.5rem;
+}
+
+/* Tour Gallery */
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(8, 1fr);
+  grid-template-rows: repeat(8, 5vw);
+  grid-gap: 15px;
 }
