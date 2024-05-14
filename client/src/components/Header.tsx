@@ -63,9 +63,11 @@ export default function Header() {
                 {currentUser ? <Link to='/dashboard'>
                     <Avatar alt="User settings" img="https://flowbite.com/docs/images/people/profile-picture-5.jpg" rounded />
                 </Link>
-                    : <Button className='bg-cyan-400'>
-                        <Link to='/login'>Войти</Link>
-                    </Button>}
+                    :
+                    <Link to='/login'>
+                        <Button className='bg-cyan-400'>Войти</Button>
+                    </Link>
+                }
             </aside>
         </nav>
     )

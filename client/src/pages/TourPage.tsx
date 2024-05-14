@@ -6,9 +6,12 @@ import { ITours, initialTourState } from "../constants/interfaces";
 import TourHeader from "../components/TourPage/TourHeader";
 import TourOverview from "../components/TourPage/TourOverview";
 import TourGallery from "../components/TourPage/TourGallery";
+import { useSelector } from "react-redux";
+import { RootState } from "../redux/store/store";
 
 export default function TourPage() {
     const { tourSlug } = useParams();
+    const {currentUser} = useSelector((state: RootState) => state.user)
     const navigate = useNavigate()
 
     const [tour, setTour] = useState<ITours>(initialTourState)
@@ -16,6 +19,10 @@ export default function TourPage() {
 
     useEffect(() => {
         // console.log(path, "also", path.pathname)
+        if (!currentUser?.isAdmin) {
+            navigate('/login')
+        }
+
         const getTour = async () => {
             fetchTour(tourSlug || '')
                 .then(data => {
