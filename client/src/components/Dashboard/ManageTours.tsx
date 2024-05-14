@@ -1,5 +1,4 @@
-import axios from "axios";
-import { Button, Modal, Table } from "flowbite-react";
+import { Button, Modal, Spinner, Table } from "flowbite-react";
 import { useEffect, useState } from "react";
 import { HiOutlineExclamationCircle } from "react-icons/hi";
 import { useSelector } from "react-redux";
@@ -10,7 +9,6 @@ import { deleteTour, fetchTours } from "../../constants/fetch";
 
 export default function ManageTours() {
     const { currentUser } = useSelector((state: RootState) => state.user)
-    const [errorMsg, setErrorMsg] = useState('')
     const [actionMsg, setActionMsg] = useState('')
 
     const [tours, setTours] = useState<ITours[]>([initialTourState])
@@ -23,7 +21,6 @@ export default function ManageTours() {
         const getTours = async () => {
             fetchTours()
                 .then(data => { setTours(data.tours) })
-                .catch(error => { setErrorMsg(error) })
         }
 
         getTours()
@@ -38,12 +35,11 @@ export default function ManageTours() {
                 console.log(actionMsg)
                 setShowModal(false)
             })
-            .catch(error => setErrorMsg(error))
     }
 
     return (
-        <section>
-            {currentUser && currentUser.isAdmin && tours.length > 0 ? (
+        <section className="relative">
+            {currentUser && currentUser.isAdmin && tours.length > 1 ? (
                 <>
                     <Table hoverable className='shadow-md'>
                         <Table.Head>
@@ -89,7 +85,7 @@ export default function ManageTours() {
                                             }}
                                             className='font-medium text-red-500 hover:underline cursor-pointer'
                                         >
-                                            Delete
+                                            Удалить
                                         </span>
                                     </Table.Cell>
                                     <Table.Cell>
@@ -97,14 +93,14 @@ export default function ManageTours() {
                                             className='text-teal-500 hover:underline'
                                             to={`/update-tour/${tour._id}`}
                                         >
-                                            <span>Edit</span>
+                                            <span>Редактировать</span>
                                         </Link>
                                     </Table.Cell>
                                 </Table.Row>
                             </Table.Body>
                         ))}
                     </Table>
-                </>) : <>No tours yet</>}
+                </>) : <Spinner className="absolute top-0 left-[50%]" size='lg'  />}
             <Modal
                 show={showModal}
                 onClose={() => setShowModal(false)}

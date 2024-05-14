@@ -37,7 +37,7 @@ export default function Header() {
     }, [path])
 
     return (
-        <section className='flex lg:flex-wrap items-center justify-around p-3' id='navbar' style={sticky ? stickyStyle : null}>
+        <nav className='navbar flex lg:flex-wrap items-center justify-around p-3 bg-cyan-500 text-white' style={sticky ? stickyStyle : null}>
             <div className='flex justify-around items-center'>
                 <Link to="/"><img src="/logo.png" width={45} height={45} alt="logo" /><span className='text-lg mt-[0.1px] '></span></Link>
             </div>
@@ -45,18 +45,18 @@ export default function Header() {
             <div className='flex justify-between items-center gap-3'>
                 {path.length > 2 ?
                     <nav className='flex gap-3'>
-                        <Link to='/'>Home</Link>
-                        <Link to='/'>About</Link>
-                        <Link to='/'>Services</Link>
-                        <Link to='/'>Tours</Link>
-                        <Link to='/'>Contact</Link>
+                        <Link to='/'>Главная</Link>
+                        <Link to='/'>О нас</Link>
+                        <Link to='/'>Услуги</Link>
+                        <Link to='/'>Туры</Link>
+                        <Link to='/'>Контакты</Link>
                     </nav> :
                     <nav className="flex gap-3">
-                        <a href="#hero">Home</a>
-                        <a href="#about">About</a>
-                        <a href="#services">Services</a>
-                        <a href="#tours">Tours</a>
-                        <a href="#contact">Contact</a>
+                        <a href="#hero">Главная</a>
+                        <a href="#about">О нас</a>
+                        <a href="#services">Услуги</a>
+                        <a href="#tours">Туры</a>
+                        <a href="#contact">Контакты</a>
                     </nav>}
             </div>
 
@@ -65,9 +65,9 @@ export default function Header() {
                     <Avatar alt="User settings" img="https://flowbite.com/docs/images/people/profile-picture-5.jpg" rounded />
                 </Link>
                     : <Button gradientDuoTone='greenToBlue'>
-                        <Link to='/login'>Sign In</Link>
+                        <Link to='/login'>Войти</Link>
                     </Button>}
             </aside>
-        </section>
+        </nav>
     )
 }
