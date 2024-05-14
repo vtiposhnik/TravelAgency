@@ -6,7 +6,8 @@ import jwt, { Secret } from 'jsonwebtoken'
 export const register = async (req: Request, res: Response, next: NextFunction) => {
     
     try {
-        const { username, email, password } = req.body
+        const { username, email, password } = req.body.userData
+        console.log(req.body)
         const user = await User.findOne({ username: username })
 
         if (!email || !password || email === '' || password === '' || !username || username === '') {
