@@ -17,3 +17,8 @@ export async function deleteTour(id: string) {
         console.log(res.data)
         return res.data
 }
+
+export async function logout() {
+        const res = await axios.post('/api/user/logout')
+        return res.data
+}

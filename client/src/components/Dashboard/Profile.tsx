@@ -1,21 +1,23 @@
-import { Button, Sidebar, SidebarItem, SidebarItemGroup } from "flowbite-react";
-import { useEffect, useState } from "react";
-import { useSelector } from "react-redux";
-import { useLocation } from "react-router-dom";
+import { Button } from "flowbite-react";
+import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../../redux/store/store";
+import { logout } from "../../constants/fetch";
+import { logOutSuccess } from "../../redux/userSlice";
 
 export default function Profile() {
-    const path = useLocation()
-    const [tab, setTab] = useState('')
-    const {currentUser} = useSelector((state: RootState) => state.user)
+    const { currentUser } = useSelector((state: RootState) => state.user)
+    const dispatch = useDispatch()
 
-    useEffect(() => {
-        const urlParams = new URLSearchParams(path.search);
-        const tabFromUrl = urlParams.get('tab');
-        if (tabFromUrl) {
-            setTab(tabFromUrl);
-        }
-    }, [path.search]);
+    const handleSignout = () => {
+        logout()
+            .then(data => {
+                console.log(data)
+                dispatch(logOutSuccess())
+            })
+            .catch(error => {
+                console.error(error)
+            })
+    }
 
     return (
         <section className="px-14 py-6">
@@ -31,7 +33,7 @@ export default function Profile() {
                 <p className="px-4 py-2 w-[50%] border rounded-lg p-4 bg-white">
                     Lorem ipsum dolor sit amet consectetur adipisicing elit. Culpa laudantium similique molestias atque quidem eius mollitia at ex saepe reprehenderit nesciunt dolore accusantium quo, dolorum asperiores quae vero fuga eos?
                 </p>
-                <Button>
+                <Button onClick={handleSignout}>
                     Выйти
                 </Button>
             </div>

@@ -3,4 +3,6 @@ import { signout } from "../controllers/user.controller";
 
 const router = Router()
 
-router.post('/signout', signout)
+router.post('/logout', signout)
+
+export default router;

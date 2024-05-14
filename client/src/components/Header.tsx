@@ -1,6 +1,6 @@
 import { Link, useLocation } from 'react-router-dom'
 import { Button, Avatar } from 'flowbite-react'
-import { useEffect, useState } from 'react'
+import { CSSProperties, useEffect, useState } from 'react'
 import { useSelector } from 'react-redux'
 import { RootState } from '../redux/store/store'
 
@@ -10,7 +10,7 @@ export default function Header() {
 
     const { currentUser } = useSelector((state: RootState) => state.user)
 
-    const stickyStyle = {
+    const stickyStyle: CSSProperties = {
         top: 0,
         position: 'fixed',
         width: '100%',
@@ -19,7 +19,6 @@ export default function Header() {
     }
 
     useEffect(() => {
-
         const stickyNavbar = () => {
             if (path.includes('login') || path.includes('register')) {
                 setSticky(false)
@@ -37,7 +36,7 @@ export default function Header() {
     }, [path])
 
     return (
-        <nav className='navbar flex lg:flex-wrap items-center justify-around p-3 bg-cyan-500 text-white' style={sticky ? stickyStyle : null}>
+        <nav className='navbar flex lg:flex-wrap items-center justify-around p-3 bg-cyan-500 text-white' style={sticky ? stickyStyle : { position: 'static' }}>
             <div className='flex justify-around items-center'>
                 <Link to="/"><img src="/logo.png" width={45} height={45} alt="logo" /><span className='text-lg mt-[0.1px] '></span></Link>
             </div>
@@ -64,7 +63,7 @@ export default function Header() {
                 {currentUser ? <Link to='/dashboard'>
                     <Avatar alt="User settings" img="https://flowbite.com/docs/images/people/profile-picture-5.jpg" rounded />
                 </Link>
-                    : <Button gradientDuoTone='greenToBlue'>
+                    : <Button className='bg-cyan-400'>
                         <Link to='/login'>Войти</Link>
                     </Button>}
             </aside>

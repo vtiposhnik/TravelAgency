@@ -6,6 +6,7 @@ import cookieParser from 'cookie-parser'
 import cors from 'cors'
 import authRoutes from './routes/auth.route'
 import tourRoutes from './routes/tour.route'
+import userRoutes from './routes/user.route'
 import { CustomError } from './util/interfaces'
 
 
@@ -39,6 +40,7 @@ app.get('/', (req, res: Response) => {
 // Routes
 app.use('/api/auth', authRoutes)
 app.use('/api/tour', tourRoutes)
+app.use('/api/user', userRoutes)
 
 app.use((err: CustomError, req: Request, res: Response, next: NextFunction): void => {
     const statusCode = err.statusCode || 500;
