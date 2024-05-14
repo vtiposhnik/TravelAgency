@@ -7,7 +7,7 @@ export default function About() {
                 <div className="grid grid-cols-1 md:grid-cols-2 items-center gap-8">
                     <div className="max-w-lg">
                         <Heading2>
-                            About Us
+                            О нас 
                         </Heading2>
                         <p className="mt-4 text-gray-600 text-lg">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed quis
                             eros at lacus feugiat hendrerit sed ut tortor. Suspendisse et magna quis elit efficitur consequat.

@@ -3,14 +3,14 @@ import { Heading1 } from "../Typography";
 
 export default function Home() {
     return (
-        <section className="hero-wrapper lg:h-[calc(100vh-3rem)]" id="hero">
-            <div className="hero-content text-center">
+        <section className="home hero-wrapper lg:h-[calc(100vh-3rem)]" id="hero">
+            <div className="hero-content">
                 <Heading1>
-                    Home
+                    ваш личный проводник
                 </Heading1>
-                <p>Lorem ipsum dolor sit amet consectetur.</p>
-                <button>
-                    <Link to='/tours'>Explore</Link>
+                <p className="w-[60%]">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Veniam unde voluptas laboriosam alias rerum assumenda.</p>
+                <button className="bg-cyan-500" >
+                    <Link to='/tours'>Начать</Link>
                 </button>
             </div>
         </section>

@@ -5,7 +5,7 @@ import Services from "../components/Home/Services"
 
 export default function HomePage() {
     return (
-        <section>
+        <section className="home">
             <Home />
             <About />
             <Services />

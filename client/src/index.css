@@ -17,6 +17,7 @@
 body {
   box-sizing: border-box;
 }
+
 section:not(.home) {
   margin: 2rem auto;
 }
@@ -24,13 +25,14 @@ section:not(.home) {
 .hero-wrapper {
   background:
     linear-gradient(rgba(0, 0, 0, 0.8),
-      rgba(0, 0, 0, 0.8)), url('/background-2.jpg');
+      rgba(0, 0, 0, 0.8)), url('https://firebasestorage.googleapis.com/v0/b/travel-69aa2.appspot.com/o/background-2.jpg?alt=media&token=7c0670cf-6a51-4183-9309-250b4447749b');
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
   height: calc(100vh - 3rem);
 }
-.home > * {
+
+.home>* {
   margin: 0;
 }
 
@@ -38,27 +40,27 @@ section:not(.home) {
   display: flex;
   flex-direction: column;
   justify-content: center;
+  align-items: center;
   height: calc(80vh - 5rem);
   color: #fff;
   text-align: center;
 
-  >p {
-    font-size: 0.9rem;
-    width: 80%;
-    margin: 0 auto;
-  }
-
-  >a {
-    margin-top: 4rem;
-  }
-
   button {
     padding: 0.7rem 2rem;
+    margin-top: 2rem;
     cursor: pointer;
-    background-color: var(--accent-clr);
+    /* background-color: rgb(87, 222, 222); */
     font-size: 1rem;
     border: none;
     color: #fff;
+  }
+  button:hover {
+    transition: background-color 0.3s ease;
+    background-color: rgb(26, 221, 232);
+  }
+
+  p {
+    width: 60%;
   }
 
   @media (min-width: 768px) {
@@ -68,10 +70,11 @@ section:not(.home) {
 
     p {
       font-size: 1.1rem;
+      width: 40%;
     }
 
     button {
-      padding: 1rem 3rem;
+      /* padding: 0.5rem 2rem; */
       font-size: 1.4rem;
     }
   }
