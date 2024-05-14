@@ -22,6 +22,12 @@ section:not(.home) {
   margin: 2rem auto;
 }
 
+/* HEADER */
+.navbar span:not(.dropdown-username) {
+  color: white;
+}
+
+/* HOME PAGE */
 .hero-wrapper {
   background:
     linear-gradient(rgba(0, 0, 0, 0.8),

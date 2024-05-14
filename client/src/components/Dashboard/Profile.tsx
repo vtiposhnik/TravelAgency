@@ -20,7 +20,7 @@ export default function Profile() {
     }
 
     return (
-        <section className="px-14 py-6">
+        <section className="px-14 py-8">
             <div className="flex flex-col items-center gap-6 border text-center py-4 bg-cyan-500 rounded-lg">
                 <figure className="relative top-[-5rem] w-[150px]" >
                     <img className="border-[4px] rounded-[50%] w-[100%]" src="https://firebasestorage.googleapis.com/v0/b/travel-69aa2.appspot.com/o/user-3.jpg?alt=media&token=0f31e7e3-bedb-43e3-b939-64b5b84cdf8e" alt="user-img" />

@@ -1,41 +1,38 @@
 import { useForm } from "react-hook-form";
 import { Alert, Button, Label, Spinner, TextInput } from "flowbite-react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
-import { signInStart, signInFailure, signInSuccess } from "../redux/userSlice";
-import { useDispatch, useSelector } from "react-redux";
-import { RootState } from "../redux/store/store";
+import { signUpApi } from "../constants/fetch";
+import { IUserSignUp } from "../constants/interfaces";
 
 export default function SignUpPage() {
     const [errorMsg, setErrorMsg] = useState('')
-    const { loading } = useSelector((state: RootState) => state.user)
-    const dispatch = useDispatch()
+    const [loading, setLoading] = useState(false)
+    const navigate = useNavigate()
 
     const {
         register,
         handleSubmit,
         watch,
         formState: { errors },
-    } = useForm();
+    } = useForm<IUserSignUp>();
     const password = watch('password', '')
 
-    const onSubmit = async (formData) => {
-        dispatch(signInStart())
-        try {
-            const res = await fetch('/api/auth/login', {
-                body: JSON.stringify(formData)
-            })
-            if (!res.ok) {
-                console.error("Response is not ok")
-            }
-            const data = await res.json()
-            dispatch(signInSuccess(data.user))
+    const onSubmit = async (formData: IUserSignUp) => {
+        console.log(formData);  
+        setLoading(true)
 
-        } catch (error) {
-            dispatch(signInFailure(error))
-            console.error(error)
-        }
-    }
+        signUpApi(formData)
+            .then(data => {
+                console.log("successfull", data.message)
+                navigate('/login');
+                setLoading(false)
+            })
+            .catch(error => {
+                setLoading(false)
+                setErrorMsg(error)
+            })
+    };
 
     return (
         <div className='min-h-screen mt-20'>

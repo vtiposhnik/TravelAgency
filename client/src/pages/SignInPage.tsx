@@ -2,14 +2,13 @@ import { useForm } from "react-hook-form";
 import { Alert, Button, Label, Spinner, TextInput } from "flowbite-react";
 import { Link, useNavigate } from "react-router-dom";
 import { ErrorBoundary } from 'react-error-boundary'
-import { useState } from "react";
 import { signInStart, signInFailure, signInSuccess } from "../redux/userSlice";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../redux/store/store";
+import { IUserSignUp } from "../constants/interfaces";
 
 export default function SignInPage() {
-    const [errorMsg, setErrorMsg] = useState('')
-    const { loading } = useSelector((state: RootState) => state.user)
+    const { loading, error: errorMsg } = useSelector((state: RootState) => state.user)
     const dispatch = useDispatch()
     const navigate = useNavigate()
 
@@ -17,9 +16,9 @@ export default function SignInPage() {
         register,
         handleSubmit,
         formState: { errors },
-    } = useForm();
+    } = useForm<IUserSignUp>();
 
-    const onSubmit = async (formData) => {
+    const onSubmit = async (formData: IUserSignUp) => {
         console.log("submitted", formData)
         dispatch(signInStart())
         try {

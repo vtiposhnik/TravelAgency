@@ -6,6 +6,12 @@ export interface User {
     updatedAt: string,
     isAdmin: boolean
 }
+export interface IUserSignUp {
+    username: string,
+    email: string,
+    password: string,
+    passwordConfirm: string
+}
 
 export interface ITours {
     _id: string,

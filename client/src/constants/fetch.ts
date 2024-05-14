@@ -1,4 +1,5 @@
 import axios from "axios";
+import { IUserSignUp } from "./interfaces";
 
 export async function fetchTours() {
         const res = await axios.get('/api/tour/getTours');
@@ -18,6 +19,10 @@ export async function deleteTour(id: string) {
         return res.data
 }
 
+export async function signUpApi(userData: IUserSignUp) {
+        const res = await axios.post('/api/auth/register', { userData })
+        return res.data
+}
 export async function logout() {
         const res = await axios.post('/api/user/logout')
         return res.data
