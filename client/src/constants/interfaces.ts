@@ -20,6 +20,7 @@ export interface ITours {
     summary: string,
     description: string,
     coverImg: string,
+    images: string[],
     createdAt: string,
     updatedAt: string
 }
@@ -33,6 +34,7 @@ export const initialTourState = {
     difficulty: 'medium',
     ratingAvg: 5.0,
     price: 999,
+    images: ["default", "default", "default"],
     summary: 'default summary',
     description: 'default description',
     coverImg: 'default image',
