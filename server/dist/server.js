@@ -12,6 +12,7 @@ const cors_1 = __importDefault(require("cors"));
 const auth_route_1 = __importDefault(require("./routes/auth.route"));
 const tour_route_1 = __importDefault(require("./routes/tour.route"));
 const user_route_1 = __importDefault(require("./routes/user.route"));
+const path_1 = __importDefault(require("path"));
 const app = (0, express_1.default)();
 // Middlewares
 app.use(body_parser_1.default.json());
@@ -19,6 +20,7 @@ app.use(express_1.default.urlencoded({ extended: true }));
 app.use((0, cookie_parser_1.default)());
 app.use((0, cors_1.default)());
 dotenv_1.default.config();
+app.use(express_1.default.static(path_1.default.join(__dirname, '../../client')));
 // MongoDB
 if (process.env.MONGO_DB_URI) {
     mongoose_1.default.connect(process.env.MONGO_DB_URI)
@@ -33,7 +35,7 @@ else {
     console.log('environment variable is undefined!');
 }
 app.get('/', (req, res) => {
-    res.json({ message: 'server running' });
+    res.json({ message: 'сервер запущен' });
 });
 // Routes
 app.use('/api/auth', auth_route_1.default);
