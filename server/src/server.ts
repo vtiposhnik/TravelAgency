@@ -19,7 +19,15 @@ app.use(cookieParser())
 app.use(cors())
 dotenv.config()
 
-app.use(express.static(path.join(__dirname, '../../client')));
+app.use(express.static(path.join(__dirname, '../../client/dist')));
+// app.use(express.static(path.join(__dirname, '../../client'), {
+//     setHeaders: (res, path) => {
+//         if (path.endsWith('.js')) {
+//             res.setHeader('Content-Type', 'text/javascript');
+//         }
+//     },
+// }));
+
 
 // MongoDB
 if (process.env.MONGO_DB_URI) {
