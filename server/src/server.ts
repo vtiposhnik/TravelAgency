@@ -20,13 +20,13 @@ app.use(cors())
 dotenv.config()
 
 app.use(express.static(path.join(__dirname, '../../client/dist')));
-// app.use(express.static(path.join(__dirname, '../../client'), {
-//     setHeaders: (res, path) => {
-//         if (path.endsWith('.js')) {
-//             res.setHeader('Content-Type', 'text/javascript');
-//         }
-//     },
-// }));
+app.use(express.static(path.join(__dirname, '../../client/dist/assets/index-DmUy4sF0.js'), {
+    setHeaders: (res, path) => {
+        if (path.endsWith('.js')) {
+            res.setHeader('Content-Type', 'text/javascript');
+        }
+    },
+}));
 
 
 // MongoDB
