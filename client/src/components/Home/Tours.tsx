@@ -1,7 +1,6 @@
 import { Link } from "react-router-dom"
 import { TruncateText } from "../UtilComps"
 import { Heading2 } from "../Typography"
-import { Button } from "flowbite-react"
 import { useEffect, useState } from "react"
 import { fetchTours } from "../../constants/fetch"
 import { ITours, initialTourState } from "../../constants/interfaces"

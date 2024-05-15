@@ -8,8 +8,7 @@ import authRoutes from './routes/auth.route'
 import tourRoutes from './routes/tour.route'
 import userRoutes from './routes/user.route'
 import { CustomError } from './util/interfaces'
-
-
+import path from 'path'
 
 const app = express()
 
@@ -19,6 +18,8 @@ app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser())
 app.use(cors())
 dotenv.config()
+
+app.use(express.static(path.join(__dirname, '../../client')));
 
 // MongoDB
 if (process.env.MONGO_DB_URI) {
