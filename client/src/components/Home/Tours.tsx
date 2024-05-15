@@ -44,9 +44,6 @@ export default function Tours() {
                     )
                 })}
             </div>
-            <Button outline size='lg' className="absolute right-8 bottom-4">
-                All Tours
-            </Button>
         </section>
     )
 }

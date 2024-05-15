@@ -7,6 +7,7 @@ import { logOutSuccess } from "../../redux/userSlice";
 export default function Profile() {
     const { currentUser } = useSelector((state: RootState) => state.user)
     const dispatch = useDispatch()
+    const date =  currentUser?.createdAt || ''
 
     const handleSignout = () => {
         logout()
@@ -28,7 +29,7 @@ export default function Profile() {
                 <div className="flex flex-wrap sm:grid sm:grid-cols-2 border rounded-lg p-4 mt-[-4rem] bg-white">
                     <span>Имя пользователя: </span>{currentUser?.username}
                     <span>Электронная почта: </span>{currentUser?.email}
-                    <span>Зарегестрирован с </span>{currentUser?.createdAt}
+                    <span>Зарегестрирован с </span>{new Date(date).toLocaleDateString()}
                 </div>
                 <p className="px-4 py-2 w-[50%] border rounded-lg p-4 bg-white">
                     Lorem ipsum dolor sit amet consectetur adipisicing elit. Culpa laudantium similique molestias atque quidem eius mollitia at ex saepe reprehenderit nesciunt dolore accusantium quo, dolorum asperiores quae vero fuga eos?

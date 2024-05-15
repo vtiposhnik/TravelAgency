@@ -34,7 +34,7 @@ if (process.env.MONGO_DB_URI) {
 }
 
 app.get('/', (req, res: Response) => {
-    res.json({ message: 'server running' })
+    res.json({ message: 'сервер запущен' })
 })
 
 // Routes

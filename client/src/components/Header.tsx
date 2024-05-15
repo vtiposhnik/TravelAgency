@@ -42,7 +42,7 @@ export default function Header() {
 
     return (
         <Navbar className='navbar flex lg:flex-wrap items-center justify-around bg-cyan-500 text-white' style={sticky ? stickyStyle : { position: 'static' }}>
-            <div className='flex justify-around items-center'>
+            <div className='logo flex justify-around items-center'>
                 <Link to="/"><img src="https://firebasestorage.googleapis.com/v0/b/travel-69aa2.appspot.com/o/logo.png?alt=media&token=0d59d61b-189f-4e6a-97e9-5def7492be20" width={45} height={45} alt="logo" /><span className='text-lg mt-[0.1px] '></span></Link>
             </div>
 
