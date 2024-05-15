@@ -8,7 +8,7 @@
     "client": "cd client && npm run dev",
     "server": "npm run dev",
     "both": "concurrently \"npm run server\" \" npm run client \" ",
-    "build": "npm install && npm install --prefix client && npm run build --prefix client",
+    "build": "npm install && npx tsc && npm install --prefix client && npm run build --prefix client",
     "start": "node ./server/dist/server.js"
   },
   "keywords": [],

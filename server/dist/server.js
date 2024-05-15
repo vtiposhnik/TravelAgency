@@ -20,7 +20,15 @@ app.use(express_1.default.urlencoded({ extended: true }));
 app.use((0, cookie_parser_1.default)());
 app.use((0, cors_1.default)());
 dotenv_1.default.config();
-app.use(express_1.default.static(path_1.default.join(__dirname, '../../client')));
+console.log("sldfjlskdjflksdjfl");
+app.use(express_1.default.static(path_1.default.join(__dirname, '../../client/dist')));
+app.use(express_1.default.static(path_1.default.join(__dirname, '../../client/dist/assets/index-DmUy4sF0.js'), {
+    setHeaders: (res, path) => {
+        if (path.endsWith('.js')) {
+            res.setHeader('Content-Type', 'text/javascript');
+        }
+    },
+}));
 // MongoDB
 if (process.env.MONGO_DB_URI) {
     mongoose_1.default.connect(process.env.MONGO_DB_URI)

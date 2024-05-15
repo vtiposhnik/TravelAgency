@@ -18,6 +18,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser())
 app.use(cors())
 dotenv.config()
+console.log("sldfjlskdjflksdjfl")
 
 app.use(express.static(path.join(__dirname, '../../client/dist')));
 app.use(express.static(path.join(__dirname, '../../client/dist/assets/index-DmUy4sF0.js'), {
