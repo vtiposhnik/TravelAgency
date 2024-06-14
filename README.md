@@ -2,24 +2,11 @@
 
 ## Table of Contents
 - [Introduction](#introduction)
-- [Features](#features)
 - [Technologies Used](#technologies-used)
-- [Installation](#installation)
-- [Usage](#usage)
-- [Project Structure](#project-structure)
-- [Contributing](#contributing)
-- [License](#license)
-- [Contact](#contact)
+- [Layout Design](#layout)
 
 ## Introduction
-Welcome to the Travel Agency Information System project. This system is designed to manage various aspects of a travel agency, including managing tours, booking trips, and customer information. The goal of this project is to streamline the operations of a travel agency and provide an efficient platform for both customers and staff.
-
-## Features
-- User authentication and authorization
-- Tour management (add, update, delete tours)
-- Booking system
-- Customer management
-- Responsive design for desktop and mobile devices
+Travel Agency commercial and basic management website.
 
 ## Technologies Used
 - **Client-side**: React, TypeScript, Tailwind CSS
